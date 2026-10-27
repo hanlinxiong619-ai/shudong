@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/market/market",
+    "pages/index/index",
+    "pages/hot/hot",
+    "pages/post-detail/post-detail",
+    "pages/publish/publish",
+    "pages/profile/profile",
+    "pages/my-posts/my-posts",
+    "pages/my-comments/my-comments",
+    "pages/search/search"
+  ],
+  "window": {
+    "navigationBarTitleText": "花海鸽舍",
+    "navigationBarBackgroundColor": "#fbfcfb",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fbfcfb"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#0aa05d",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/market/market",
+        "text": "集市",
+        "iconPath": "assets/icons/tab-market-inactive.png",
+        "selectedIconPath": "assets/icons/tab-market.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "树洞",
+        "iconPath": "assets/icons/tab-treehole-inactive.png",
+        "selectedIconPath": "assets/icons/tab-treehole.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/icons/tab-profile-inactive.png",
+        "selectedIconPath": "assets/icons/tab-profile.png"
+      }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents"
+}

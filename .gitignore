@@ -1,0 +1,20 @@
+# Java 编译输出
+target/
+*.class
+
+# 日志文件
+*.log
+
+# IDEA 编辑器配置
+.idea/
+*.iml
+
+# Maven 配置
+.mvn/
+
+# 微信小程序依赖
+miniprogram/node_modules/
+miniprogram/miniprogram_npm/
+
+# 本地环境配置（如果有存放密码的 yml，请检查并取消注释）
+# src/main/resources/application.yml

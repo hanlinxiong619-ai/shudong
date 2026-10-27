@@ -1,0 +1,1 @@
+@import "../../theme.wxss";.publish{padding:20rpx 44rpx}.picker,.field,.editor{background:#fff;border:2rpx solid #b9dcca;border-radius:20rpx;padding:24rpx;margin:20rpx 0;font-size:29rpx}.editor{height:420rpx;width:auto}.submit{background:#0aa05d;color:#fff;border-radius:44rpx;margin-top:30rpx}

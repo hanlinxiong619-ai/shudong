@@ -1,0 +1,231 @@
+/* 页面整体：设置页面背景、内边距和基础字体 */
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background: #f6faf8;
+  color: #29483d;
+}
+
+/* 页面标题：显示集市名称和副标题 */
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 14rpx;
+  margin-bottom: 28rpx;
+}
+
+/* 页面主标题：显示“集市” */
+.brand {
+  font-size: 46rpx;
+  font-weight: 700;
+  color: #087a51;
+}
+
+/* 页面副标题：显示校园生活信息 */
+.subtitle {
+  font-size: 25rpx;
+  color: #7a968b;
+}
+
+/* 分类区域：支持横向滚动显示多个分类 */
+.filters {
+  width: 100%;
+  white-space: nowrap;
+  margin: 0 -30rpx 24rpx;
+  padding: 8rpx 30rpx 18rpx;
+  box-sizing: border-box;
+}
+
+/* 分类项目：控制每个分类的大小、间距和文字排列 */
+.filter {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 147rpx;
+  height: 176rpx;
+  padding: 8rpx 10rpx 12rpx;
+  margin-right: 14rpx;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  color: #416e5d;
+  font-size: 25rpx;
+  vertical-align: top;
+  white-space: normal;
+}
+
+/* 分类图标：设置图标大小、背景、圆角和阴影 */
+.filter-icon {
+  display: block;
+  width: 86rpx;
+  height: 86rpx;
+  margin-bottom: 8rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(38, 107, 75, 0.12);
+}
+
+/* 全部内容图标：用文字符号代替图片图标 */
+.all-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #087a51;
+  font-size: 42rpx;
+  line-height: 86rpx;
+}
+
+/* 分类名称：控制分类文字的宽度、对齐方式和大小 */
+.filter > text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: inherit;
+  font-size: 25rpx;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* 当前选中的分类：改变文字颜色和字体粗细 */
+.filter.active {
+  color: #087a51;
+  font-weight: 600;
+}
+
+/* 当前选中的图标：改变图标背景颜色 */
+.filter.active .filter-icon {
+  background: #d7f3e7;
+}
+
+/* 空数据区域：没有帖子时显示提示文字 */
+.empty {
+  padding: 90rpx 30rpx;
+  text-align: center;
+  color: #8ca39a;
+  font-size: 27rpx;
+}
+
+/* 帖子卡片：设置每一条帖子的白色卡片样式 */
+.post-card {
+  margin-bottom: 22rpx;
+  padding: 26rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 6rpx 20rpx rgba(38, 107, 75, 0.08);
+}
+
+/* 帖子顶部信息：排列头像、昵称和发布时间 */
+.post-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+/* 用户头像：设置匿名用户头像占位区域 */
+.avatar {
+  width: 62rpx;
+  height: 62rpx;
+  margin-right: 16rpx;
+  border-radius: 50%;
+  background: #d7f3e7;
+}
+
+/* 用户昵称：显示匿名用户名称 */
+.nickname {
+  font-size: 27rpx;
+  font-weight: 600;
+  color: #355b4d;
+}
+
+/* 发布时间：显示帖子创建时间 */
+.time {
+  margin-left: auto;
+  font-size: 22rpx;
+  color: #9bad a5;
+}
+
+/* 帖子分类：显示当前帖子的分类名称 */
+.board {
+  display: inline-block;
+  margin-bottom: 14rpx;
+  padding: 7rpx 14rpx;
+  border-radius: 20rpx;
+  background: #e4f6ed;
+  color: #087a51;
+  font-size: 22rpx;
+}
+
+/* 帖子标题：显示帖子标题 */
+.title {
+  margin-bottom: 12rpx;
+  font-size: 31rpx;
+  line-height: 1.5;
+  font-weight: 650;
+  color: #274a3d;
+}
+
+/* 帖子正文：显示帖子详细内容 */
+.content {
+  font-size: 27rpx;
+  line-height: 1.7;
+  color: #557066;
+  word-break: break-all;
+}
+
+/* 价格信息：显示帖子中的预估价格 */
+.price {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #d67a27;
+}
+
+/* 帖子统计：显示浏览量、点赞数和评论数 */
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 30rpx;
+  margin-top: 22rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid #edf3ef;
+  color: #91a59c;
+  font-size: 22rpx;
+}
+
+/* 发布按钮：固定在页面右下角用于发布新帖子 */
+.fab {
+  position: fixed;
+  right: 34rpx;
+  bottom: 42rpx;
+  width: 108rpx;
+  height: 108rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #087a51;
+  color: #ffffff;
+  font-size: 58rpx;
+  line-height: 1;
+  box-shadow: 0 8rpx 24rpx rgba(8, 122, 81, 0.25);
+}
+.filters{height:142rpx!important}.filter{display:inline-flex!important;width:126rpx!important;height:132rpx!important;padding:0!important;margin-right:14rpx!important;vertical-align:top!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important}.filter-icon{display:block!important;width:82rpx!important;height:82rpx!important;margin:0 auto 8rpx!important;border-radius:20rpx!important}.filter>text{display:block!important;width:126rpx!important;height:34rpx!important;line-height:34rpx!important;text-align:center!important;white-space:nowrap!important}
+.page-bg{position:fixed;left:0;top:0;width:100%;height:100%;z-index:-1}.page{background:rgba(255,255,255,.56)!important}.campus-tabs{white-space:nowrap;margin:0 -30rpx 20rpx;padding:0 30rpx}.campus-tab{display:inline-block;padding:12rpx 30rpx;margin-right:18rpx;border-bottom:4rpx solid transparent;color:#668176}.campus-tab.active{color:#087a51;border-bottom-color:#087a51;font-weight:600}.filter-icon{background:transparent!important;border-radius:0!important;box-shadow:none!important}
+
+.filter-icon{background:transparent!important;border-radius:0!important;box-shadow:none!important}
+
+
+/* 统一集市筛选图标尺寸 */
+.filter-icon{width:82rpx!important;height:82rpx!important;object-fit:contain!important;flex:none!important}
+
+
+.page{position:relative;z-index:1}.page-bg{pointer-events:none}.fab{z-index:20}
+
+.post-images{display:flex;gap:10rpx;margin-top:16rpx;overflow:hidden}.post-images image{flex:none;width:190rpx;height:160rpx;border-radius:10rpx}.fab-area{position:fixed;inset:0;width:100vw;height:100vh;z-index:20;pointer-events:none}.fab-area .fab{position:relative!important;right:auto!important;bottom:auto!important;pointer-events:auto}
+.filters{background:#fff!important;border-radius:12rpx;padding-top:12rpx!important}.college-picker{margin:0 0 20rpx}.college-select{display:flex;justify-content:space-between;align-items:center;padding:18rpx 24rpx;background:#fff;border:1rpx solid #cce5d9;border-radius:12rpx;color:#31594a}.post-images{display:block!important;width:100%;white-space:nowrap;overflow:hidden}.post-images image{display:inline-block!important;margin-right:10rpx;vertical-align:top}
+.filters{height:116rpx!important;margin:0 20rpx 18rpx!important;padding:8rpx 10rpx!important;width:auto!important;box-sizing:border-box}.filter{width:112rpx!important;height:104rpx!important;margin-right:8rpx!important}.filter-icon{width:66rpx!important;height:66rpx!important;margin-bottom:4rpx!important}.filter>text{width:112rpx!important;height:30rpx!important;line-height:30rpx!important;font-size:22rpx!important;overflow:visible!important}.college-picker{margin-left:20rpx!important;margin-right:20rpx!important}
+.sticky-search{position:sticky;top:16rpx;z-index:15;height:82rpx;margin:0 0 22rpx;padding-left:24rpx;background:#fff;border:2rpx solid #49a681;border-radius:44rpx;display:flex;align-items:center;overflow:hidden;box-shadow:0 6rpx 18rpx rgba(8,122,81,.10)}.sticky-search input{flex:1;min-width:0}.sticky-search button{width:126rpx;height:82rpx;line-height:82rpx;padding:0;border-radius:0;background:#20a878;color:#fff;font-size:26rpx}.sticky-search button::after{border:0}
+.brand-logo{width:76rpx;height:76rpx;border-radius:50%;margin-left:auto;object-fit:cover;border:3rpx solid #fff}.sticky-services{position:sticky;top:0;z-index:15;padding-top:8rpx;background:rgba(246,250,248,.96);backdrop-filter:blur(12rpx)}.sticky-services .sticky-search{position:relative;top:auto}.back-top{position:fixed;right:42rpx;bottom:130rpx;z-index:40;width:82rpx;height:82rpx;line-height:78rpx;padding:0;border-radius:50%;background:#159b70;color:#fff;font-size:38rpx;box-shadow:0 8rpx 24rpx rgba(0,0,0,.18)}

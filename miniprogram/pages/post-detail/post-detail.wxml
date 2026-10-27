@@ -1,0 +1,26 @@
+<view class="page detail">
+  <view wx:if="{{loading}}" class="empty">正在加载...</view>
+  <scroll-view wx:if="{{post}}" class="detail-scroll" scroll-y scroll-into-view="{{scrollIntoView}}" scroll-with-animation>
+    <view class="post-card">
+      <view class="post-head"><image class="avatar" src="{{post.avatarUrl||'/assets/icons/pigeon.png'}}" mode="aspectFill"/><text class="nickname">{{post.nickname||'匿名用户'}}</text><text class="board head-board">{{post.boardName||post.boardCode}}</text><text class="time">{{post.createdAt}}</text></view>
+      <view wx:if="{{post.title}}" class="title">{{post.title}}</view>
+      <view class="content full">{{post.content}}</view>
+      <scroll-view wx:if="{{post.images&&post.images.length}}" class="post-images" scroll-x enhanced show-scrollbar="{{false}}"><image wx:for="{{post.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" data-src="{{item}}" bindtap="previewImage"/></scroll-view>
+      <view wx:if="{{post.estimatedPrice!==null&&post.estimatedPrice!==undefined}}" class="price">预估价格：{{post.estimatedPrice}} 元</view>
+      <button wx:if="{{post.groupType==='MARKET'&&post.contact}}" class="copy-contact" bindtap="copyContact">复制联系方式</button>
+    </view>
+    <view class="post-like-row"><button bindtap="like">{{post.liked?'♥':'♡'}} {{post.likeCount||0}}</button></view>
+    <view class="comment-title">评论 {{post.commentCount||0}}</view>
+    <view wx:if="{{!comments.length}}" class="empty">暂无评论</view>
+    <view id="comment-{{item.id||item._id}}" class="comment {{item.parentId?'child-comment':''}}" wx:for="{{comments}}" wx:key="_id">
+      <view class="comment-head"><image class="comment-avatar" src="{{item.avatarUrl||'/assets/icons/pigeon.png'}}" mode="aspectFill"/><text class="nickname">{{item.nickname||'匿名用户'}}</text></view>
+      <view class="comment-body" data-parent-id="{{item.parentId}}" bindtap="locateParent"><text wx:if="{{item.parentId}}" class="reply-prefix">回复{{item.parentNickname||'原评论人'}}：</text>{{item.content}}</view>
+      <view class="comment-actions"><text data-id="{{item.id||item._id}}" bindtap="reply">回复</text><text wx:if="{{item.isMine}}" data-id="{{item.id||item._id}}" bindtap="deleteComment">删除</text><text class="comment-like" data-id="{{item.id||item._id}}" bindtap="likeComment">{{item.liked?'♥':'♡'}} {{item.likeCount||0}}</text></view>
+    </view>
+    <view class="bottom-space"></view>
+  </scroll-view>
+  <view wx:if="{{post}}" class="comment-composer">
+    <view wx:if="{{replyTarget}}" class="reply-target"><text>回复 {{replyTarget.nickname||'匿名用户'}}：{{replyTarget.content}}</text><text bindtap="cancelReply">×</text></view>
+    <view class="composer-row"><input value="{{commentText}}" bindinput="inputComment" placeholder="{{replyTarget?'写下回复':'写下评论'}}" confirm-type="send" bindconfirm="sendComment"/><button bindtap="sendComment" loading="{{submittingComment}}">发送</button></view>
+  </view>
+</view>

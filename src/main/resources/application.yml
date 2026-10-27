@@ -1,0 +1,17 @@
+server:
+  port: 8803
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/beita_treehole?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: ${MYSQL_ROOT_PASSWORD:117623}
+wechat:
+  app-id: ${WECHAT_APP_ID:}
+  app-secret: ${WECHAT_APP_SECRET:}
+  dev-login-enabled: ${DEV_LOGIN_ENABLED:true}
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 10
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: cn.beita.treehole.model

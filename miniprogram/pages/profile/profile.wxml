@@ -1,0 +1,15 @@
+<view class="page profile">
+  <view class="profile-card">
+    <view class="profile-main" wx:if="{{user}}">
+      <image class="avatar big" src="{{user.avatarUrl || '/assets/icons/pigeon.png'}}" mode="aspectFill"/>
+      <view class="identity"><text class="nickname">{{user.nickname || defaultName}}</text><text class="profile-note">花海鸽舍匿名同学</text></view>
+    </view>
+    <view class="profile-main logged-out" wx:else><view class="identity"><text class="nickname">未登录</text><button class="login-btn" bindtap="login">微信登录</button></view></view>
+    <view class="profile-actions" wx:if="{{user}}">
+      <view class="profile-action" bindtap="editAvatar"><text class="action-value">头像</text><text>修改头像</text></view>
+      <view class="profile-action" bindtap="editName"><text class="action-value">昵称</text><text>修改名字</text></view>
+      <view class="profile-action" bindtap="logout"><text class="action-value">退出</text><text>退出登录</text></view>
+    </view>
+  </view>
+  <view class="menu"><view class="menu-item" bindtap="showPosts"><text>我的发布</text><text>›</text></view><view class="menu-item" bindtap="showComments"><text>我的评论</text><text>›</text></view><view class="menu-item" bindtap="showReplies"><text>我的回复</text><text>›</text></view><view class="menu-item" bindtap="verify"><text>校园认证</text><text>暂未完善 ›</text></view></view>
+</view>

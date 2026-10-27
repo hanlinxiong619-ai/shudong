@@ -1,0 +1,117 @@
+
+<!-- 页面整体容器：用于承载集市页面的主要内容 -->
+<image class="page-bg" src="/assets/treehole-background.jpg" mode="aspectFill"/>
+<view class="page">
+
+  <!-- 页面标题区域：显示集市名称和校园生活信息副标题 -->
+  <view class="header">
+    <text class="brand">花海鸽舍</text>
+    <image class="brand-logo" src="/assets/icons/brand.png" mode="aspectFill"/>
+  </view>
+
+  <view class="sticky-services">
+  <view class="search sticky-search"><input placeholder="搜索全部帖子" value="{{search}}" bindinput="inputSearch" bindconfirm="search" confirm-type="search"/><button bindtap="search">搜索</button></view>
+
+  <!-- 分类筛选区域：横向展示不同集市分类并支持点击切换 -->
+  <scroll-view class="filters" scroll-x>
+    <view
+      class="filter {{active===item.code?'active':''}}"
+      wx:for="{{sections}}"
+      wx:key="code"
+      data-code="{{item.code}}"
+      bindtap="choose"
+    >
+      <image
+        wx:if="{{item.icon}}"
+        class="filter-icon"
+        src="{{item.icon}}"
+        mode="aspectFit"
+      />
+      <image
+        wx:else
+        class="filter-icon"
+        src="/assets/icons/all-market.png"
+        mode="aspectFit"
+      />
+      <text>{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <scroll-view class="campus-tabs" scroll-x>
+    <view class="campus-tab {{campus===''?'active':''}}" data-campus="" bindtap="chooseCampus">全部校区</view>
+    <view class="campus-tab {{campus==='花都'?'active':''}}" data-campus="花都" bindtap="chooseCampus">花都</view>
+    <view class="campus-tab {{campus==='海珠'?'active':''}}" data-campus="海珠" bindtap="chooseCampus">海珠</view>
+  </scroll-view>
+
+  <picker wx:if="{{campus}}" class="college-picker" range="{{collegeOptions}}" bindchange="chooseCollege">
+    <view class="college-select">学院：{{college||'全部学院'}} <text>⌄</text></view>
+  </picker>
+  </view>
+
+  <!-- 空数据提示区域：没有帖子且当前没有加载数据时显示提示 -->
+  <view
+    wx:if="{{!posts.length&&!loading}}"
+    class="empty"
+  >
+    暂时还没有集市帖子
+  </view>
+
+  <!-- 帖子列表区域：循环显示服务器返回的集市帖子 -->
+  <view
+    class="post-card"
+    wx:for="{{posts}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    bindtap="openPost"
+  >
+
+    <!-- 帖子基本信息区域：显示用户头像、昵称和发布时间 -->
+    <view class="post-head">
+      <image class="avatar" src="{{item.avatarUrl||'/assets/icons/pigeon.png'}}" mode="aspectFill"/>
+      <text class="nickname">{{item.nickname||'匿名用户'}}</text>
+      <text class="time">{{item.createdAt}}</text>
+    </view>
+
+    <!-- 帖子分类区域：显示当前帖子的所属分类名称 -->
+    <view class="board">
+      {{item.boardName}}
+    </view>
+
+    <!-- 帖子标题区域：只有存在标题时才显示 -->
+    <view
+      wx:if="{{item.title}}"
+      class="title"
+    >
+      {{item.title}}
+    </view>
+
+    <!-- 帖子正文区域：显示帖子的主要文字内容 -->
+    <view class="content">
+      {{item.content}}
+    </view>
+
+    <scroll-view wx:if="{{item.images&&item.images.length}}" class="post-images" scroll-x enhanced show-scrollbar="{{false}}"><image wx:for="{{item.images}}" wx:key="*this" src="{{item}}" mode="aspectFill"/></scroll-view>
+
+    <!-- 价格信息区域：存在预估价格时显示价格信息 -->
+    <view
+      wx:if="{{item.estimatedPrice!==null&&item.estimatedPrice!==undefined}}"
+      class="price"
+    >
+      预估价格：{{item.estimatedPrice}} 元
+    </view>
+
+    <!-- 数据统计区域：显示帖子的浏览量、点赞数和评论数 -->
+    <view class="stats">
+      <text>◷ {{item.viewCount||0}} 人围观</text>
+      <text>♡ {{item.likeCount||0}}</text>
+      <text>□ {{item.commentCount||0}}</text>
+    </view>
+
+  </view>
+</view>
+
+<!-- 可拖动发布按钮 -->
+<button wx:if="{{showTop}}" class="back-top" bindtap="backTop">↑</button><movable-area class="fab-area"><movable-view class="fab" direction="all" x="300" y="500" out-of-bounds bindtap="publish">＋</movable-view></movable-area>
+
+
+

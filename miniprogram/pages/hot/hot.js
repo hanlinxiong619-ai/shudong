@@ -1,0 +1,1 @@
+const api=require('../../utils/api');Page({data:{posts:[]},onLoad(){api.request('/api/posts?page=1&pageSize=10&group=TREEHOLE&sort=hot').then(r=>this.setData({posts:r.data||[]}));},open(e){wx.navigateTo({url:'/pages/post-detail/post-detail?id='+e.currentTarget.dataset.id});}});

@@ -1,0 +1,3 @@
+package cn.beita.treehole.controller;
+import cn.beita.treehole.common.ApiResponse; import cn.beita.treehole.mapper.PostMapper; import cn.beita.treehole.model.Post; import org.springframework.web.bind.annotation.*; import java.util.*;
+@RestController @RequestMapping("/api/search") public class SearchController { private final PostMapper mapper; public SearchController(PostMapper m){mapper=m;} @GetMapping public ApiResponse<List<Post>> search(@RequestParam String q){ if(q==null||q.trim().isEmpty()) return ApiResponse.ok(Collections.emptyList()); List<Post> exact=mapper.exactSearch(q.trim()); if(!exact.isEmpty()) return ApiResponse.ok(exact); return ApiResponse.ok(mapper.fuzzySearch(q.trim())); } }

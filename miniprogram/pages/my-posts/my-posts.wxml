@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="title">我的发布</view>
+  <view wx:if="{{loading}}" class="empty">正在加载...</view>
+  <view wx:if="{{!loading&&!posts.length}}" class="empty">暂无发布</view>
+  <view wx:for="{{posts}}" wx:key="_id" class="post-card" data-id="{{item.id||item._id}}" bindtap="open">
+    <view class="post-row"><view><text class="board">{{item.boardName||item.boardCode}}</text><text class="post-time">{{item.createdAt}}</text></view><button class="delete-btn" data-id="{{item.id||item._id}}" catchtap="deletePost">删除</button></view>
+    <view wx:if="{{item.title}}" class="post-title">{{item.title}}</view>
+    <view class="content">{{item.content}}</view>
+    <image wx:if="{{item.images&&item.images.length}}" class="thumb" src="{{item.images[0]}}" mode="aspectFill"/>
+    <view class="stats">♡ {{item.likeCount||0}}　回复 {{item.commentCount||0}}　围观 {{item.viewCount||0}}</view>
+  </view>
+</view>
