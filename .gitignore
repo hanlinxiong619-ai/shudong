@@ -18,3 +18,4 @@ miniprogram/miniprogram_npm/
 
 # 本地环境配置（如果有存放密码的 yml，请检查并取消注释）
 # src/main/resources/application.yml
+miniprogram/project.private.config.json
